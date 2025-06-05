@@ -1,0 +1,55 @@
+# Simple Student Record System using Dictionary
+
+students = {}
+
+def add_student():
+    roll = input("Enter roll number: ")
+    name = input("Enter name: ")
+    marks = int(input("Enter marks: "))
+    students[roll] = {'name': name, 'marks': marks}
+    print("Student added!\n")
+
+def display_all():
+    print("\nAll Student Records:")
+    for roll, info in students.items():
+        print(f"Roll: {roll}, Name: {info['name']}, Marks: {info['marks']}")
+    print()
+
+def search_student():
+    roll = input("Enter roll number to search: ")
+    if roll in students:
+        print(f"Found: Name: {students[roll]['name']}, Marks: {students[roll]['marks']}")
+    else:
+        print("Student not found.")
+
+def delete_student():
+    roll = input("Enter roll number to delete: ")
+    if roll in students:
+        del students[roll]
+        print("Student deleted!")
+    else:
+        print("Student not found.")
+
+# Main program loop
+while True:
+    print("\nOptions:")
+    print("1. Add Student")
+    print("2. Display All Students")
+    print("3. Search Student")
+    print("4. Delete Student")
+    print("5. Exit")
+
+    choice = input("Choose an option: ")
+
+    if choice == '1':
+        add_student()
+    elif choice == '2':
+        display_all()
+    elif choice == '3':
+        search_student()
+    elif choice == '4':
+        delete_student()
+    elif choice == '5':
+        break
+    else:
+        print("Invalid option. Try again.")
